@@ -1,0 +1,37 @@
+.styled-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.2 ease;
+    border: none;
+    background: none;
+}
+.contained-button {
+    
+    color: white;
+    background-color: rgb(0, 94, 216);
+
+    &:hover {
+        background-color: rgb(0, 58, 134);
+        box-shadow: 0px 0px 2px lightgrey;
+    }
+    &:active {
+        background-color: rgb(47, 103, 177);
+    }
+}
+.outlined-button {
+    border: 1px solid rgb(0, 94, 216);
+    color: rgb(0, 58, 134);
+
+    &:hover {
+        box-shadow: 0px 0px 2px lightgrey;
+        border: 1px solid rgb(0, 58, 134);
+    }
+    &:active {
+        background-color: rgb(210, 229, 255);
+    }
+}

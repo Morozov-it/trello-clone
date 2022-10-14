@@ -1,0 +1,17 @@
+.boards-container {
+    width: 100%;
+    padding: 10px 5px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.add-board {
+    width: 300px;
+    margin: 0 5px;
+    flex-shrink: 0;
+    border: 1px solid grey;
+    box-shadow: 0px 0px 5px grey;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}

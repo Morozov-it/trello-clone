@@ -15,6 +15,7 @@ export interface ISubTasks {
 export interface ITask {
     id: string
     title: string
+    isDragable: boolean
     description: string
     tags: ITag[]
     subTasks: ISubTasks[]

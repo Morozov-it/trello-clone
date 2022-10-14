@@ -1,0 +1,28 @@
+.add-item__no-edit {
+    cursor: pointer;
+    background-color: rgb(240, 240, 240);
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+        background-color: white;
+    }
+}
+
+.add-item__edit {
+    background-color: rgb(240, 240, 240);
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 5px;
+    }
+}

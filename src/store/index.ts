@@ -1,14 +1,14 @@
 import { bindActionCreators, configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-import { boardsActions, boardsReducer } from './boards/boards.slice'
+import { dashboardActions, dashboardReducer } from './dashboard/dashboard.slice'
 
 const actions = {
-    ...boardsActions,
+    ...dashboardActions,
 }
 
 export const store = configureStore({
     reducer: {
-        boards: boardsReducer,
+        dashboard: dashboardReducer,
     },
 })
 

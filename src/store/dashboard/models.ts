@@ -29,14 +29,25 @@ export interface InitialState {
 
 // export default initialData
 
+export type AddTaskPayload = Omit<ITask, 'isDragable' | 'description' | 'tags' | 'subTasks'> & { boardId: string }
 
-export interface AddTaskPayload {
-    id: string
-    title: string
-    boardId: string
+export type AddBoardPayload = Omit<IBoard, 'isDragable' | 'isEdit' | 'taskIds'> 
+
+export interface ChangeBoardOrderPayload {
+    draggableId: string
+    sourceIndex: number
+    destinationIndex: number
 }
 
-export interface AddBoardPayload {
-    id: string
+export interface ChangeTaskOrderPayload {
+    draggableId: string
+    sourceIndex: number
+    destinationIndex: number
+    sourceBoardId: string
+    destinationBoardId: string
+}
+
+export interface EditBoardTitlePayload {
+    boardId: string
     title: string
 }
