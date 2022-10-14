@@ -26,14 +26,14 @@ const Popover: React.FC<Props> = ({ children, className, onYes, text = 'Are you 
                 <div className='popover-body__buttons'>
                     <Button
                         onClick={handleOk}
-                        className={className}
+                        className='outlined-button'
                         style={{ color: 'green' }}
                     >
                         <MdDone />{' Yes'}
                     </Button>
                     <Button
                         onClick={offVisible}
-                        className={className}
+                        className='outlined-button'
                         style={{ color: 'red' }}
                     >
                         <MdClear />{' No'}

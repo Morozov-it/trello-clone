@@ -15,3 +15,8 @@
     overflow: hidden;
     transition: all 0.2s ease;
 }
+
+.clear-button {
+    margin: 0 5px;
+    flex-shrink: 0;
+}

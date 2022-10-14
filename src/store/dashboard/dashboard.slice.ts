@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { storageKey } from "../../models"
 import {
     InitialState,
     AddBoardPayload,
@@ -15,14 +14,9 @@ const initialState: InitialState = {
     boardOrder: []
 }
 
-const setInitialState = (): InitialState => 
-    !!localStorage.getItem(storageKey)
-        ? JSON.parse(localStorage.getItem(storageKey)!)
-        : initialState
-
 const dashboardSlice = createSlice({
-    name: 'boards',
-    initialState: setInitialState(),
+    name: 'dashboard',
+    initialState,
     reducers: {
         addTask: (state, { payload }: PayloadAction<AddTaskPayload>) => {
             state.tasks[payload.id] = {
@@ -83,7 +77,8 @@ const dashboardSlice = createSlice({
             newOrder.splice(payload.destinationIndex, 0, payload.draggableId)
 
             state.boardOrder = newOrder
-        }
+        },
+        clearAll: (state) => initialState,
     }
 })
 

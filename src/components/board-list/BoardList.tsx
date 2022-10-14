@@ -5,11 +5,12 @@ import { v4 } from 'uuid'
 import { useActions, useAppSelector } from '../../store'
 import { AddItem } from '../add-item'
 import { Board } from '../board'
+import { Popover } from '../controllers'
 import './styles.scss'
 
 const BoardList: React.FC = () => {
     const { tasks, boards, boardOrder } = useAppSelector((state) => state.dashboard)
-    const { changeBoardOrder, changeTaskOrder, addBoard } = useActions()
+    const { changeBoardOrder, changeTaskOrder, addBoard, clearAll } = useActions()
 
     const onDragEnd = useCallback((result: DropResult) => {
         const { destination, source, draggableId, type } = result
@@ -42,7 +43,7 @@ const BoardList: React.FC = () => {
         const newBoard = { id: v4(), title }
         addBoard(newBoard)
     }, [])
-    
+    const onClearAll = useCallback(() => clearAll(), [])
 
     return (
         <DragDropContext onDragEnd={onDragEnd}>
@@ -66,6 +67,11 @@ const BoardList: React.FC = () => {
                         {provided.placeholder}
                         <div className='add-board'>
                             <AddItem name='board' onAdd={onAddBoard} />
+                        </div>
+                        <div className='clear-button'>
+                            <Popover className='contained-button' onYes={onClearAll}>
+                                Clear All
+                            </Popover>
                         </div>
                     </div>
                 )}

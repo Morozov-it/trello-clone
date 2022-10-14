@@ -1,5 +1,3 @@
-export const storageKey = 'boards'
-
 export interface ITag {
     id: string
     text: string
