@@ -1,0 +1,52 @@
+.add-tag-no-edit {
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.add-tag-edit {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &-inputs {
+        width: 100%;
+        display: flex;
+        gap: 4px;
+
+        &__text {
+            flex-grow: 1;
+        }
+        &__color {
+            border: 1px solid gray;
+            border-radius: 5px;
+            background: none;
+
+            &:focus {
+                border-radius: 5px;
+                border: 1px solid blue;
+                box-shadow: 0px 0px 2px lightgrey;
+                outline-style: none;
+            }
+        }
+    }
+
+    &-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 5px;
+
+        &__clear {
+            color: grey;
+            cursor: pointer;
+            font-size: 24px;
+            &:hover {
+                color: black;
+            }
+        }
+    }
+}

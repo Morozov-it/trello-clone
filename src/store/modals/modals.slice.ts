@@ -42,7 +42,15 @@ const modalsSlice = createSlice({
             if (!!state.task) { 
                 state.task.subTasks = state.task.subTasks.filter((subTask) => subTask.id !== payload.id)
             }
-        }
+        },
+        addTag: (state, { payload }: PayloadAction<{ text: string, color: string }>) => {
+            state.task?.tags.push({ id: v4(), text: payload.text, color: payload.color })
+        },
+        removeTag: (state, { payload }: PayloadAction<{ id: string }>) => { 
+            if (!!state.task) { 
+                state.task.tags = state.task.tags.filter((tag) => tag.id !== payload.id)
+            }
+        },
     }
 })
 

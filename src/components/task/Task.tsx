@@ -58,7 +58,11 @@ const Task: React.FC<Props> = ({ task, index, boardId }) => {
                             </div>
                         }
                         {task.tags.map((tag) => (
-                            <div></div>
+                            <div
+                                key={tag.id}
+                                className='task-description__tag'
+                                style={{ background: tag.color }}
+                            />
                         ))}
                     </div>
                 </div>

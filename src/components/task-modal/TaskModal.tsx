@@ -1,16 +1,26 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useState } from 'react'
-import { MdClose, MdDeleteOutline, MdOutlineDescription, MdOutlineLibraryAddCheck } from 'react-icons/md'
+import { MdClose, MdDeleteOutline, MdOutlineDescription, MdOutlineLibraryAddCheck, MdTag } from 'react-icons/md'
 import { useActions, useAppSelector } from '../../store'
 import { Button, Input } from '../controllers'
 import './styles.scss'
 import { AddItem } from '../add-item'
+import { PickUpTag } from '../pickup-tag'
 
 const TaskModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     const [editTitle, setEditTitle] = useState(false)
     const [editDesc, setEditDesc] = useState(false)
     const task = useAppSelector((state) => state.modals.task!)
-    const { changeTaskTitle, changeTask, changeTaskDesc, addSubTask, toggleSubTask, removeSubTask } = useActions()
+    const {
+        changeTaskTitle,
+        changeTask,
+        changeTaskDesc,
+        addSubTask,
+        toggleSubTask,
+        removeSubTask,
+        addTag,
+        removeTag,
+    } = useActions()
 
     //save & close modal
     const handleClose = useCallback(() => onClose(), [])
@@ -32,6 +42,10 @@ const TaskModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     const onAddSubTask = useCallback((title: string) => addSubTask({ title }), [])
     const onToggleSubTask = useCallback((id: string) => toggleSubTask({ id }), [])
     const onRemoveSubTask = useCallback((id: string) => removeSubTask({ id }), [])
+
+    //edit tags
+    const onAddTag = useCallback((text: string, color: string) => addTag({ text, color }), [])
+    const onRemoveTag = useCallback((id: string) => removeTag({ id }), [])
 
     return (
         <div className='task-modal'>
@@ -87,6 +101,29 @@ const TaskModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                         </div>
                     ))}
                     <AddItem name='sub-task' onAdd={onAddSubTask}/>
+                </div>
+            </div>
+            <div className="task-modal-tags">
+                <div className="task-modal-tags__title">
+                    <MdTag />
+                    <h4>Tags</h4>
+                </div>
+                <div className="task-modal-tags-body">
+                    <div className="task-modal-tags-body-items">
+                        {task.tags.map((tag) => (
+                            <div
+                                key={tag.id}
+                                className="task-modal-tags-body-items-elem"
+                                style={{ background: tag.color }}
+                            >
+                                <span>{tag.text}</span>
+                                <MdDeleteOutline
+                                    className="task-modal-tags-body-items-elem__delete"
+                                    onClick={() => onRemoveTag(tag.id)} />
+                            </div>
+                        ))}
+                    </div>
+                    <PickUpTag onAdd={onAddTag}/>
                 </div>
             </div>
             <div className="task-modal__save-button">
