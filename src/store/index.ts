@@ -12,13 +12,16 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { dashboardActions, dashboardReducer } from './dashboard/dashboard.slice'
+import { modalsActions, modalsReducer } from './modals/modals.slice'
 
 const actions = {
     ...dashboardActions,
+    ...modalsActions,
 }
 
 const rootReducer = combineReducers({
     dashboard: dashboardReducer,
+    modals: modalsReducer,
 })
 
 const persistConfig = {

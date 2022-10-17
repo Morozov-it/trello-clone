@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import {
+    ITask,
     InitialState,
     AddBoardPayload,
     AddTaskPayload,
@@ -28,6 +29,22 @@ const dashboardSlice = createSlice({
                 subTasks: []
             }
             state.boards[payload.boardId].taskIds.push(payload.id)
+        },
+        toggleTask: (state, { payload }: PayloadAction<{ id: string }>) => { 
+            state.tasks[payload.id] = {
+                ...state.tasks[payload.id],
+                isDragable: !state.tasks[payload.id].isDragable
+            }
+        },
+        changeTask: (state, { payload }: PayloadAction<ITask>) => { 
+            state.tasks[payload.id] = payload
+        },
+        deleteTask: (state, { payload }: PayloadAction<{ id: string, boardId: string }>) => { 
+            state.boards[payload.boardId] = {
+                ...state.boards[payload.boardId],
+                taskIds: state.boards[payload.boardId].taskIds.filter((id) => id !== payload.id)
+            }
+            delete state.tasks[payload.id]
         },
         addBoard: (state, { payload }: PayloadAction<AddBoardPayload>) => { 
             state.boards[payload.id] = {

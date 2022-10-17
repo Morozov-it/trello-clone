@@ -12,6 +12,7 @@ const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLI
         <input
             ref={ref}
             {...other}
+            autoFocus
             className={styles}
         />
     )

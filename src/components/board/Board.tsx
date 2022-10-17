@@ -89,7 +89,12 @@ const Board: React.FC<Props> = ({ board, index, tasks }) => {
                                     {...provided.droppableProps}
                                     className='board-list'
                                 >
-                                    {tasks.map((task, i) => <Task key={task.id} task={task} index={i} />)}
+                                    {tasks.map((task, i) => <Task
+                                        key={task.id}
+                                        task={task}
+                                        index={i}
+                                        boardId={board.id}
+                                    />)}
                                     {provided.placeholder}
                                 </div>
                                 <div className='add-task'>

@@ -1,0 +1,115 @@
+@mixin grey-button($size, $color) {
+    color: grey;
+    cursor: pointer;
+    font-size: $size;
+    &:hover {
+        color: $color;
+    }
+}
+
+.task-modal {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &-title {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 5px;
+
+        &__main {
+            flex-grow: 1;
+
+            & > input {
+                display: inline-block;
+                width: 95%;
+            }
+            & > h3 {
+                cursor: text;
+            }
+        }
+
+        &__close { @include grey-button(24px, black); }
+    }
+
+    &-description {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        &__title {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            justify-content: flex-start;
+        }
+
+        &__body {
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            & > textarea {
+                display: block;
+                width: 100%;
+                border: 1px solid gray;
+                border-radius: 5px;
+                padding: 10px;
+
+                &:focus {
+                    border-radius: 5px;
+                    border: 1px solid blue;
+                    box-shadow: 0px 0px 2px lightgrey;
+                    outline-style: none;
+                }
+            }
+
+            & > p {
+                cursor: text;
+            }
+        }
+    }
+
+    &-subtasks {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        &__title {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            justify-content: flex-start;
+        }
+
+        &-body {
+            padding: 0 15px;
+            & > .add-item__no-edit, .add-item__edit {
+                background-color: white;
+            }
+
+            &-item {
+                padding: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                & > label {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                }
+
+                &__delete { @include grey-button(20px, red); }
+            }
+        }
+    }
+
+    &__save-button > button {
+        margin-right: auto;
+    }
+}

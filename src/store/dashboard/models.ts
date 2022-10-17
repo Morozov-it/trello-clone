@@ -1,4 +1,5 @@
 import { ITask, IBoard } from "../../models"
+export type { ITask } from "../../models"
 
 export interface InitialState {
     tasks: { [key: string]: ITask }

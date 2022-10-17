@@ -7,7 +7,7 @@ import './styles.scss'
 interface Props {
     children: React.ReactNode
     onYes: () => void
-    className: 'contained-button' | 'outlined-button'
+    className?: 'contained-button' | 'outlined-button'
     text?: string
 }
 
